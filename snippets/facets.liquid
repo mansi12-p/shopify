@@ -193,13 +193,16 @@
                           role="list"
                         >
                           {%- for value in sorted_values -%}
-                            {% liquid
+                             {% if filter.param_name == 'filter.v.availability' and value.value == '0' %}
+                                {% continue %}
+                              {% endif %}
+                            {%- liquid
                               assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
                               assign is_disabled = false
                               if value.count == 0 and value.active == false
                                 assign is_disabled = true
                               endif
-                            %}
+                            -%}
                             {%- capture label_class -%}
                             facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
                             {%- endcapture -%}
@@ -399,7 +402,9 @@
                     id="SortBy"
                     aria-describedby="a11y-refresh-page-message"
                   >
+                    {%- assign allowed_sort_values = 'price-ascending,price-descending,created-descending' | split: ',' -%}
                     {%- for option in results.sort_options -%}
+                    {% if allowed_sort_values contains option.value %}
                       <option
                         value="{{ option.value | escape }}"
                         {% if option.value == sort_by %}
@@ -408,6 +413,7 @@
                       >
                         {{ option.name | escape }}
                       </option>
+                    {% endif %}
                     {%- endfor -%}
                   </select>
                   <span class="svg-wrapper">
@@ -561,6 +567,10 @@
                               endif
                             -%}
                             {%- for value in sorted_values -%}
+                               {% if filter.param_name == 'filter.v.availability' and value.value == '0' %}
+                                {% continue %}
+                              {% endif %}
+
                               {% liquid
                                 assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-mobile-' | append: forloop.index
                                 assign is_disabled = false
@@ -732,15 +742,18 @@
                           id="SortBy-mobile"
                           aria-describedby="a11y-refresh-page-message"
                         >
+                           {%- assign allowed_sort_values = 'price-ascending,price-descending,created-descending' | split: ',' -%}
                           {%- for option in results.sort_options -%}
-                            <option
-                              value="{{ option.value | escape }}"
-                              {% if option.value == sort_by %}
-                                selected="selected"
-                              {% endif %}
-                            >
-                              {{ option.name | escape }}
-                            </option>
+                             {% if allowed_sort_values contains option.value %}
+                              <option
+                                value="{{ option.value | escape }}"
+                                {% if option.value == sort_by %}
+                                  selected="selected"
+                                {% endif %}
+                              >
+                                {{ option.name | escape }}
+                              </option>
+                          {% endif %}
                           {%- endfor -%}
                         </select>
                         <span class="svg-wrapper">
@@ -839,7 +852,9 @@
                 id="SortBy"
                 aria-describedby="a11y-refresh-page-message"
               >
+                {%- assign allowed_sort_values = 'price-ascending,price-descending,created-descending' | split: ',' -%}
                 {%- for option in results.sort_options -%}
+                {% if allowed_sort_values contains option.value %}
                   <option
                     value="{{ option.value | escape }}"
                     {% if option.value == sort_by %}
@@ -848,6 +863,7 @@
                   >
                     {{ option.name | escape }}
                   </option>
+                {% endif %}
                 {%- endfor -%}
               </select>
               <span class="svg-wrapper">

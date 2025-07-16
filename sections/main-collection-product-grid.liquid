@@ -55,15 +55,18 @@
                   id="SortBy"
                   aria-describedby="a11y-refresh-page-message"
                 >
+                 {%- assign allowed_sort_values = 'price-ascending,price-descending,created-descending' | split: ',' -%}
                   {%- for option in collection.sort_options -%}
-                    <option
-                      value="{{ option.value | escape }}"
-                      {% if option.value == sort_by %}
-                        selected="selected"
-                      {% endif %}
-                    >
-                      {{ option.name | escape }}
-                    </option>
+                    {% if allowed_sort_values contains option.value %}
+                      <option
+                        value="{{ option.value | escape }}"
+                        {% if option.value == sort_by %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {{ option.name | escape }}
+                      </option>
+                    {% endif %}
                   {%- endfor -%}
                 </select>
                 <span class="svg-wrapper">

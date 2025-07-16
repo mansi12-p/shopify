@@ -39,6 +39,32 @@
     endif
   -%}
 
+  {%- assign matching_variant = null -%}
+
+  {% if option.name == 'Size' %}
+    {%- assign option_index = option.position | minus: 1 -%}
+    {%- assign matching_variant = null -%}
+
+    {%- for variant in product.variants -%}
+      {%- if variant.options[option_index] == value -%}
+        {%- assign matching_variant = variant -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- assign inventory_status = '' -%}
+    {%- if matching_variant -%}
+      {%- assign inventory = matching_variant.inventory_quantity -%}
+      {%- if inventory > 5 -%}
+        {%- assign inventory_status = 'available' -%}
+      {%- elsif inventory > 0 -%}
+        {%- assign inventory_status = 'low stock' -%}
+      {%- else -%}
+        {%- assign inventory_status = 'out of stock' -%}
+      {%- endif -%}
+    {%- endif -%}
+  {% endif %}
+
   {%- capture input_id -%}
     {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
   {%- endcapture -%}
@@ -92,7 +118,11 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}">
-      {{ value -}}
+      {% if option.name == 'Size' %}
+       {{ value }} -  {{ inventory_status }}
+      {% else %}
+        {{ value }}
+      {% endif %}
       {{ label_unavailable }}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}

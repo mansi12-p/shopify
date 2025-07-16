@@ -140,6 +140,28 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
+              
+              {%  when 'custom-inventory' %}
+             <div class="custom-inventory-message">
+              <p
+                class="product-inventory__msg"
+                {{ block.shopify_attributes }}
+                id="Inventory-{{ section.id }}"
+                role="status"
+              >
+                {% assign variant = product.selected_or_first_available_variant %}
+
+                {% if variant.inventory_management == 'shopify' %}
+                  {% if variant.inventory_quantity > 0 %}
+                    {% if variant.inventory_quantity < block.settings.inventory_display %}
+                      <span>Only {{ variant.inventory_quantity }} left in stock</span>
+                    {% endif %}
+                  {% elsif variant.inventory_quantity == 0 %}
+                    <span>Back in stock soon</span>
+                  {% endif %}
+                {% endif %}
+              </p>
+            </div>
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -471,6 +493,28 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {% when 'already-purchase' %}
+                  {% if customer %}
+                    {% assign bought_before = false %}
+
+                    {% for order in customer.orders %}
+                      {% for item in order.line_items %}
+                        {% if item.product.id == product.id %}
+                          {% assign bought_before = true %}
+                          {% break %}
+                        {% endif %}
+                      {% endfor %}
+                      {% if bought_before %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if bought_before %}
+                      <div class="already-purchase-text">
+                        <p>{{ block.settings.text }}</p>
+                      </div>
+                    {% endif %}
+                  {% endif %}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -803,6 +847,22 @@
       ]
     },
     {
+      "type": "custom-inventory", 
+      "name": "Inventory Messsage",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "inventory_display",
+          "label": "Inventory threshold message",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 10
+        },
+      ]
+    },
+    {
       "type": "inventory",
       "name": "t:sections.main-product.blocks.inventory.name",
       "limit": 1,
@@ -890,6 +950,18 @@
             }
           ],
           "default": "circle"
+        }
+      ]
+    },
+    {
+      "type": "already-purchase",
+      "name": "Already Purchase Item",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
         }
       ]
     },
