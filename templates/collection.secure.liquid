@@ -1,67 +1,52 @@
-{% comment %}
-  Secure Collection Template – Password Protected
-{% endcomment %}
-
 {% assign secret_password = 'mysecret123' %}
 
-<div class="secured-collection-wrapper">
-  {% if request.posted and request.form_input.password == secret_password %}
-    <div
-      class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-    >
-      <div class="loading-overlay gradient"></div>
-      <ul
-        id="product-grid"
-        data-id="{{ section.id }}"
-        class="
-          grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
-          grid--{{ section.settings.columns_desktop }}-col-desktop
-          {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
-        "
-      >
-        {% assign skip_card_product_styles = false %}
-        {%- for product in collection.products -%}
-          {% assign lazy_load = false %}
-          {%- if forloop.index > 2 -%}
-            {%- assign lazy_load = true -%}
-          {%- endif -%}
-          <li
-            class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-              style="--animation-order: {{ forloop.index }};"
-            {% endif %}
-          >
-            {% render 'card-product',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              lazy_load: lazy_load,
-              skip_styles: skip_card_product_styles,
-              quick_add: section.settings.quick_add,
-              section_id: section.id
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {%- endfor -%}
-      </ul>
-
-      {%- if paginate.pages > 1 -%}
-        {% render 'pagination', paginate: paginate, anchor: '' %}
-      {%- endif -%}
-    </div>
-  {% else %}
-    <form method="post">
+<div id="secured-collection" class="secured-collection-wrapper">
+  <div id="password-form">
+    <form onsubmit="return validatePassword(event)">
       <label for="password">Enter password to view this collection:</label>
-      <input type="password" name="password" id="password">
+      <input type="password" id="collection-password" required>
       <button type="submit">Submit</button>
+      <p id="error-msg" style="color:red; display:none;">Incorrect password. Please try again.</p>
     </form>
+  </div>
 
-    {% if request.posted %}
-      <p style="color:red;">Incorrect password. Please try again.</p>
-    {% endif %}
-  {% endif %}
+  <div id="collection-content" style="display:none;">
+    {% for product in collection.products %}
+      <div class="product-item">
+        <h3>{{ product.title }}</h3>
+        <a href="{{ product.url }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% endif %}
+        </a>
+        <p>{{ product.price | money }}</p>
+      </div>
+    {% endfor %}
+  </div>
 </div>
+
+<script>
+  const correctPassword = '{{ secret_password }}';
+
+  function validatePassword(event) {
+    event.preventDefault();
+    const input = document.getElementById('collection-password').value;
+
+    if (input === correctPassword) {
+      localStorage.setItem('unlocked_collection', 'true');
+      showCollectionContent();
+    } else {
+      document.getElementById('error-msg').style.display = 'block';
+    }
+  }
+
+  function showCollectionContent() {
+    document.getElementById('password-form').style.display = 'none';
+    document.getElementById('collection-content').style.display = 'block';
+  }
+
+  // Auto-unlock if password was entered previously
+  if (localStorage.getItem('unlocked_collection') === 'true') {
+    showCollectionContent();
+  }
+</script>
