@@ -1,65 +1,154 @@
 <style>
-    .custom-banner {
-      background: #F2F0F1;
-    }
+  .custom-banner {
+    background: #F2F0F1;
+    padding: 40px 0;
+  }
+
+  .custom-banner-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .left-side-container {
+    flex: 1;
+  }
+
+  .right-side-block {
+    flex: 1;
+    text-align: right;
+  }
+
+  .top-content .heading {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .top-content .sub-heading {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 32px;
+  }
+
+  .top-content .custom-button {
+    padding: 16px 54px;
+    border: none;
+    border-radius: 64px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 16px;
+  }
+
+  .bottom-content {
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+  }
+
+  .content {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding-right: 16px;
+    margin-right: 16px;
+  }
+
+  .content:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .counts {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1;
+    margin-right: 16px;
+  }
+
+  .info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    padding-top: 6px;
+  }
+
+  .banner-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  @media screen and (max-width: 1024px) {
     .custom-banner-wrapper {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .right-side-block {
+      text-align: center;
       width: 100%;
     }
-    .left-side-container {
-      align-content: center;
-    }
+
     .top-content .heading {
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 64px;
-      vertical-align: middle;
+      font-size: 42px;
+      text-align: left;
     }
-    .top-content .sub-heading {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 22px;
-      margin-bottom: 32px;
-    }
-    .top-content .custom-button {
-      padding: 16px 54px;
-      border: none !important;
-      border-radius: 64px;
-      background: black;
-      color: white;
-      text-decoration: none;
-    }
+
     .bottom-content {
-      margin-top: 48px;
-  }
-    .bottom-content {
-      margin-top: 48px;
-      display: flex;
-      gap: 2%;
-  }
-    .counts {
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 100%;
-      vertical-align: middle;
-      margin-right: 32px;
-  }
-    .info {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 22px;
-      padding-top: 6px;
-      margin-right: 32px;
-  }
+      flex-direction: column;
+      gap: 24px;
+    }
+
     .content {
-      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: none;
+      padding-right: 0;
+      margin-right: 0;
+    }
+
+    .counts {
+      font-size: 32px;
+    }
+
+    .top-content .custom-button {
+      padding: 14px 36px;
+      font-size: 14px;
+    }
   }
-  .content:last-child {
-  border-right: none;
-}
+
+  @media screen and (max-width: 600px) {
+    .top-content .heading {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .top-content .sub-heading {
+      font-size: 14px;
+    }
+
+    .counts {
+      font-size: 28px;
+    }
+
+    .info {
+      font-size: 14px;
+    }
+
+    .top-content .custom-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
 </style>
+
 <div class="custom-banner">
   <div class="custom-banner-wrapper  page-width">
     <div class="left-side-container">
