@@ -1,3 +1,57 @@
+<div class="review-slider swiper">
+  {% if section.settings.heading != blank %}
+    <h2 class="review-heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide review-slide">
+        {% if block.settings.ratting_icon %}
+          <div class="rating-icon">
+            <img src="{{ block.settings.ratting_icon | img_url: 'small' }}" alt="Rating">
+          </div>
+        {% endif %}
+        <div class="review-content">
+          <div class="review-user">
+          <span>{{ block.settings.user_name }} </span><span>{{ 'verified.svg' | inline_asset_content }}</span>
+          </div>
+           <div class="review-text">
+            {{ block.settings.review_text }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.review-slider.swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 24,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 3
+        }
+      }
+    });
+  });
+</script>
+
 {% schema %}
   {
     "name": "Section name",
