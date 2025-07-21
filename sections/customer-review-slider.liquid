@@ -1,6 +1,35 @@
 {% schema %}
   {
     "name": "Section name",
-    "settings": []
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+      }
+    ],
+    "blocks": [
+      {
+        "type": "reviews",
+        "name": "Reviews",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "ratting_icon",
+            "label": "Ratting Icon"
+          },
+          {
+            "type": "text",
+            "id": "user_name",
+            "label": "User Name"
+          },
+          {
+            "type": "richtext",
+            "id": "review_text",
+            "label": "Review"
+          }
+        ]
+      }
+    ]
   }
 {% endschema %}
