@@ -45,7 +45,6 @@
     document.getElementById('collection-content').style.display = 'block';
   }
 
-  // Auto-unlock if password was entered previously
   if (localStorage.getItem('unlocked_collection') === 'true') {
     showCollectionContent();
   }
