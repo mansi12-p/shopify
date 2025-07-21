@@ -132,6 +132,17 @@
       "name": "Logo Slider",
       "settings": {}
     },
+    "custom_featured_collection_D64CCw": {
+      "type": "custom-featured-collection",
+      "name": "Custom Collection",
+      "settings": {
+        "heading": "NEW ARRIVALS",
+        "collection": "adidas",
+        "prod_count": 4,
+        "button_text": "View All",
+        "button_url": "shopify://collections/adidas"
+      }
+    },
     "browse_by_style_wnn4pJ": {
       "type": "browse-by-style",
       "name": "Browse By collection",
@@ -150,6 +161,7 @@
     "image_banner",
     "custom_banner_E8ewF3",
     "logo_slider_68hRe8",
+    "custom_featured_collection_D64CCw",
     "browse_by_style_wnn4pJ"
   ]
 }
