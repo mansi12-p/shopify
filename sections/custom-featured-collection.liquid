@@ -1,3 +1,37 @@
+<div class="collection-section">
+  {% if section.settings.heading != blank %}
+    <h2>{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  {% assign selected_collection = collections[section.settings.collection] %}
+  
+  {% if selected_collection != blank and selected_collection.products_count > 0 %}
+    <div class="products-grid">
+      {% for product in selected_collection.products limit: section.settings.prod_count %}
+        <div class="product-item">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+            {% endif %}
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.price | money }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if section.settings.button_url != blank %}
+      <div class="view-all-button">
+        <a href="{{ section.settings.button_url }}" class="btn">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  {% else %}
+    <p>No products available in this collection.</p>
+  {% endif %}
+</div>
+
 {% schema %}
   {
     "name": "Section name",
@@ -20,6 +54,17 @@
         "max": 12,
         "step": 1,
         "default": 4
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "View All"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL"
       }
     ]
   }
