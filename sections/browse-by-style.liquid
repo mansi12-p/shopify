@@ -1,3 +1,14 @@
+<div class="browse-by-collection">
+  <div class="browse-by-collection-wrapper">
+    <div class="heading">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    </div>
+    <div class="collection-wrapper">
+    </div>
+  </div>
+</div>
 {% schema %}
   {
     "name": "Section name",
