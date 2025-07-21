@@ -1,7 +1,36 @@
 <div class="custom-banner">
   <div class="custom-banner-wrapper">
     <div class="right-side-block">
-    <div class="banner-image"></div>
+    <div class="banner-image">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_tag: 'original' }}" height="auto" width="auto">
+      {% endif %}
+    </div>
+    </div>
+    <div class="left-side-container">
+      <div class="top-content">
+      {% if section.settings.text != blank %}
+        <h2>{{ section.settings.text }}</h2>
+      {%  endif %}
+      {% if section.settings.sub_text != blank %}
+        <div>{{ section.settings.sub_text }}</div>
+      {%  endif %}
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}">{{ ection.settings.button_text }}</a>
+      {%  endif %}
+      </div>
+      <div class="bottom-content">
+        {% for block in section.blocks %}
+          <div class="content">
+            {% if block.settings.counts != blank %}
+              <div class="counts">{{ block.settings.counts }}</div>
+            {% endif %}
+            {% if block.settings.label != blank %}
+              <div class="info">{{ block.settings.label }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
