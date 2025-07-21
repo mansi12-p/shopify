@@ -137,7 +137,7 @@
       "name": "Custom Collection",
       "settings": {
         "heading": "NEW ARRIVALS",
-        "collection": "adidas",
+        "collection": "all-products",
         "prod_count": 4,
         "button_text": "View All",
         "button_url": "shopify://collections/adidas"
