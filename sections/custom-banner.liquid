@@ -62,13 +62,6 @@
 </style>
 <div class="custom-banner">
   <div class="custom-banner-wrapper  page-width">
-    <div class="right-side-block">
-      <div class="banner-image">
-        {% if section.settings.image != blank %}
-          {{ section.settings.image | image_url: width: 400 | image_tag }}
-        {% endif %}
-      </div>
-    </div>
     <div class="left-side-container">
       <div class="top-content">
         {% if section.settings.text != blank %}
@@ -94,6 +87,14 @@
         {% endfor %}
       </div>
     </div>
+    <div class="right-side-block">
+      <div class="banner-image">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 400 | image_tag }}
+        {% endif %}
+      </div>
+    </div>
+    
   </div>
 </div>
 {% schema %}
