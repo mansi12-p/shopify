@@ -166,6 +166,44 @@
           "puma"
         ]
       }
+    },
+    "customer_review_slider_gkdW4L": {
+      "type": "customer-review-slider",
+      "blocks": {
+        "reviews_CzJAta": {
+          "type": "reviews",
+          "settings": {
+            "ratting_icon": "shopify://shop_images/Frame_10.svg",
+            "user_name": "Sarah M.",
+            "review_text": "<p>\"I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”</p>"
+          }
+        },
+        "reviews_A7MKix": {
+          "type": "reviews",
+          "settings": {
+            "ratting_icon": "shopify://shop_images/Frame_10.svg",
+            "user_name": "Alex K.",
+            "review_text": "<p>\"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”</p>"
+          }
+        },
+        "reviews_zbhjdL": {
+          "type": "reviews",
+          "settings": {
+            "ratting_icon": "shopify://shop_images/Frame_10.svg",
+            "user_name": "James L.",
+            "review_text": "<p>\"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”</p>"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_CzJAta",
+        "reviews_A7MKix",
+        "reviews_zbhjdL"
+      ],
+      "name": "Review Slider",
+      "settings": {
+        "heading": "OUR HAPPY CUSTOMERS"
+      }
     }
   },
   "order": [
@@ -174,6 +212,7 @@
     "logo_slider_68hRe8",
     "custom_featured_collection_D64CCw",
     "custom_featured_collection_JfyjKt",
-    "browse_by_style_wnn4pJ"
+    "browse_by_style_wnn4pJ",
+    "customer_review_slider_gkdW4L"
   ]
 }
