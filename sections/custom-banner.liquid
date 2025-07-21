@@ -1,6 +1,62 @@
+<div class="custom-banner">
+  <div class="custom-banner-wrapper">
+    <div class="right-side-block">
+    <div class="banner-image"></div>
+    </div>
+  </div>
+</div>
 {% schema %}
   {
     "name": "Section name",
-    "settings": []
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Heading"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "sub_text",
+        "label": "Sub Heading"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URl"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "info-block",
+        "name": "Information",
+        "settings": [
+          {
+            "type": "text",
+            "id": "counts",
+            "label": "Counts"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Information"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Banner"
+      }
+    ]
   }
 {% endschema %}
