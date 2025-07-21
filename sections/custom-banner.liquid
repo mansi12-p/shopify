@@ -3,7 +3,7 @@
     <div class="right-side-block">
     <div class="banner-image">
       {% if section.settings.image != blank %}
-        <img src="{{ section.settings.image | img_tag: 'original' }}" height="auto" width="auto">
+        {{ section.settings.image | image_url: width: 400 | image_tag }}
       {% endif %}
     </div>
     </div>
