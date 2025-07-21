@@ -1,17 +1,58 @@
 <style>
   .logo-slider {
     background: black;
+    padding: 44px 0;
   }
+
   .logo-slider-wrapper {
     display: flex;
-    justify-content: space-around;
-    padding: 44px 0 44px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
   }
+
+  .logos {
+    flex: 0 0 auto;
+  }
+
   .logos img {
-    height: 33px;
-    width: 166px;
+    height: auto;
+    width: 100%;
+    max-width: 166px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ✅ Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .logo-slider-wrapper {
+      justify-content: center;
+      gap: 16px;
+      padding: 32px 16px;
+    }
+
+    .logos img {
+      max-width: 120px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .logo-slider-wrapper {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 16px;
+    }
+
+    .logos {
+      flex: 0 0 auto;
+    }
+
+    .logos img {
+      max-width: 100px;
+    }
   }
 </style>
+
 <div class="logo-slider">
   <div class="logo-slider-wrapper">
     {% for block in section.blocks %}
