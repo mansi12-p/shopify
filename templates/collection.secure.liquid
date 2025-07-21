@@ -1,4 +1,4 @@
-{% assign secret_password = 'mysecret123' %}
+{% assign secret_password = 'mysecretkey123' %}
 
 <div id="secured-collection" class="secured-collection-wrapper">
   <div id="password-form">
@@ -13,12 +13,12 @@
   <div id="collection-content" style="display:none;">
      {% for product in collection.products %}
       <div class="product-item">
-        <h3>{{ product.title }}</h3>
         <a href="{{ product.url }}">
           {% if product.featured_image %}
             <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
           {% endif %}
         </a>
+         <h3>{{ product.title }}</h3>
         <p>{{ product.price | money }}</p>
       </div>
     {% endfor %}
