@@ -1,0 +1,31 @@
+{% comment %}
+  Secure Collection Template – Password Protected
+{% endcomment %}
+
+{% assign secret_password = 'mysecret123' %}
+
+<div class="secured-collection-wrapper">
+  {% if request.posted and request.form_input.password == secret_password %}
+    {% for product in collection.products %}
+      <div class="product-item">
+        <h3>{{ product.title }}</h3>
+        <a href="{{ product.url }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% endif %}
+        </a>
+        <p>{{ product.price | money }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <form method="post">
+      <label for="password">Enter password to view this collection:</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit">Submit</button>
+    </form>
+
+    {% if request.posted %}
+      <p style="color:red;">Incorrect password. Please try again.</p>
+    {% endif %}
+  {% endif %}
+</div>
