@@ -1,3 +1,23 @@
+<style>
+  .browse-by-collection {
+    background: #F0F0F0;
+    border-radius: 40px;
+    padding: 76px;
+    margin-top: 76px;
+}
+  .heading h2 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+  .collection-wrapper {
+    display: flex;
+    gap: 24px;
+    flex-wrap: nowrap;
+}
+</style>
 <div class="browse-by-collection page-width">
   <div class="browse-by-collection-wrapper">
     <div class="heading">
@@ -10,12 +30,16 @@
       {% for collection in collections %}
         <div class="collection-item">
           <a href="{{ collection.url }}">
+            <div class="collection-title">
+            <h3>{{ collection.title }}</h3>
+            </div>
             {% if collection.image %}
-              <img src="{{ collection.image | img_url: 'medium' }}" alt="{{ collection.title }}">
+              <div class="collection-image">
+                <img src="{{ collection.image | img_url: 'medium' }}" alt="{{ collection.title }}">
+              </div>
             {% else %}
               <p>No image available</p>
             {% endif %}
-            <h3>{{ collection.title }}</h3>
           </a>
         </div>
       {% endfor %}
