@@ -143,6 +143,17 @@
         "button_url": "shopify://collections/adidas"
       }
     },
+    "custom_featured_collection_JfyjKt": {
+      "type": "custom-featured-collection",
+      "name": "Custom Collection",
+      "settings": {
+        "heading": "top selling",
+        "collection": "adidas",
+        "prod_count": 4,
+        "button_text": "View All",
+        "button_url": "shopify://collections/adidas"
+      }
+    },
     "browse_by_style_wnn4pJ": {
       "type": "browse-by-style",
       "name": "Browse By collection",
@@ -162,6 +173,7 @@
     "custom_banner_E8ewF3",
     "logo_slider_68hRe8",
     "custom_featured_collection_D64CCw",
+    "custom_featured_collection_JfyjKt",
     "browse_by_style_wnn4pJ"
   ]
 }
