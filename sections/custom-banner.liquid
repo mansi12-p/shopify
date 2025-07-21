@@ -1,34 +1,48 @@
 <style>
-  .custom-banner {
-    background: #F2F0F1;
+.custom-banner {
+  background: #F2F0F1;
 }
-  .custom-banner-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    width: 100%;
+.custom-banner-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  width: 100%;
+}
+.left-side-container {
+  align-content: center;
+}
+.top-content .heading {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  vertical-align: middle;
+}
+.top-content .sub-heading {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
 }
 </style>
 <div class="custom-banner">
   <div class="custom-banner-wrapper  page-width">
     <div class="right-side-block">
-    <div class="banner-image">
-      {% if section.settings.image != blank %}
-        {{ section.settings.image | image_url: width: 400 | image_tag }}
-      {% endif %}
-    </div>
+      <div class="banner-image">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 400 | image_tag }}
+        {% endif %}
+      </div>
     </div>
     <div class="left-side-container">
       <div class="top-content">
-      {% if section.settings.text != blank %}
-        <h2>{{ section.settings.text }}</h2>
-      {%  endif %}
-      {% if section.settings.sub_text != blank %}
-        <div>{{ section.settings.sub_text }}</div>
-      {%  endif %}
-      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-        <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
-      {%  endif %}
+        {% if section.settings.text != blank %}
+          <h2 class="heading">{{ section.settings.text }}</h2>
+        {% endif %}
+        {% if section.settings.sub_text != blank %}
+          <div class="sub-heading">{{ section.settings.sub_text }}</div>
+        {% endif %}
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+          <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+        {% endif %}
       </div>
       <div class="bottom-content">
         {% for block in section.blocks %}
@@ -46,57 +60,57 @@
   </div>
 </div>
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "text",
-        "id": "text",
-        "label": "Heading"
-      },
-      {
-        "type": "inline_richtext",
-        "id": "sub_text",
-        "label": "Sub Heading"
-      },
-      {
-        "type": "text",
-        "id": "button_text",
-        "label": "Button Text"
-      },
-      {
-        "type": "url",
-        "id": "button_url",
-        "label": "Button URl"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "info-block",
-        "name": "Information",
-        "settings": [
-          {
-            "type": "text",
-            "id": "counts",
-            "label": "Counts"
-          },
-          {
-            "type": "text",
-            "id": "label",
-            "label": "Information"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Custom Banner"
-      }
-    ]
-  }
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "sub_text",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URl"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info-block",
+      "name": "Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "counts",
+          "label": "Counts"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Information"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
+}
 {% endschema %}
