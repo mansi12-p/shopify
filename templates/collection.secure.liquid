@@ -11,23 +11,17 @@
   </div>
 
   <div id="collection-content" style="display:none;">
-    {%- for product in collection.products -%}
-      {% assign lazy_load = false %}
-      {%- if forloop.index > 2 -%}
-        {%- assign lazy_load = true -%}
-      {%- endif -%}
-      <li
-        class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-        {% if settings.animations_reveal_on_scroll %}
-          data-cascade
-          style="--animation-order: {{ forloop.index }};"
-        {% endif %}
-      >
-        {% render 'card-product',
-          card_product: product
-        %}
-      </li>
-    {%- endfor -%}
+     {% for product in collection.products %}
+      <div class="product-item">
+        <h3>{{ product.title }}</h3>
+        <a href="{{ product.url }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% endif %}
+        </a>
+        <p>{{ product.price | money }}</p>
+      </div>
+    {% endfor %}
   </div>
 </div>
 
