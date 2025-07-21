@@ -88,6 +88,50 @@
         "button_url": "shopify://collections"
       }
     },
+    "logo_slider_68hRe8": {
+      "type": "logo-slider",
+      "blocks": {
+        "logo_slider_Eqzc3M": {
+          "type": "logo-slider",
+          "settings": {
+            "logo_image": "shopify://shop_images/Group.svg"
+          }
+        },
+        "logo_slider_MBHdaV": {
+          "type": "logo-slider",
+          "settings": {
+            "logo_image": "shopify://shop_images/zara-logo-1_1.svg"
+          }
+        },
+        "logo_slider_wPLKiq": {
+          "type": "logo-slider",
+          "settings": {
+            "logo_image": "shopify://shop_images/gucci-logo-1_1.svg"
+          }
+        },
+        "logo_slider_xFtwX3": {
+          "type": "logo-slider",
+          "settings": {
+            "logo_image": "shopify://shop_images/prada-logo-1_1.svg"
+          }
+        },
+        "logo_slider_DCm9Y9": {
+          "type": "logo-slider",
+          "settings": {
+            "logo_image": "shopify://shop_images/Group_1.svg"
+          }
+        }
+      },
+      "block_order": [
+        "logo_slider_Eqzc3M",
+        "logo_slider_MBHdaV",
+        "logo_slider_wPLKiq",
+        "logo_slider_xFtwX3",
+        "logo_slider_DCm9Y9"
+      ],
+      "name": "Logo Slider",
+      "settings": {}
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -162,6 +206,7 @@
   "order": [
     "image_banner",
     "custom_banner_E8ewF3",
+    "logo_slider_68hRe8",
     "featured_collection",
     "featured_collection_rbYR6N",
     "browse_by_style_wnn4pJ"
