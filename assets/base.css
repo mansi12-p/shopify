@@ -3595,14 +3595,3 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
-
-.collection__title {
-    justify-items: center !important;
-}
-h2.title.inline-richtext.h2 {
-    font-weight: 700 !important;
-    font-size: 48px !important;
-    line-height: 100%;
-    text-align: center;
-    vertical-align: middle;
-}
