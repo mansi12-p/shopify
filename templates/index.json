@@ -91,9 +91,9 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "adidas",
         "products_to_show": 8,
-        "title": "Featured products",
+        "title": "NEW ARRIVALS",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
