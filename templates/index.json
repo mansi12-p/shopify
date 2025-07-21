@@ -51,6 +51,34 @@
     },
     "custom_banner_E8ewF3": {
       "type": "custom-banner",
+      "blocks": {
+        "info_block_teTEaM": {
+          "type": "info-block",
+          "settings": {
+            "counts": "200+",
+            "label": "International Brands"
+          }
+        },
+        "info_block_WC8A9g": {
+          "type": "info-block",
+          "settings": {
+            "counts": "2,000+",
+            "label": "High-Quality Products"
+          }
+        },
+        "info_block_KwEP6r": {
+          "type": "info-block",
+          "settings": {
+            "counts": "30,000+",
+            "label": "Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "info_block_teTEaM",
+        "info_block_WC8A9g",
+        "info_block_KwEP6r"
+      ],
       "name": "Custom Banner",
       "settings": {
         "image": "shopify://shop_images/b26fea69ccfd8aa5825862cdb9604a4fb4930464.jpg",
