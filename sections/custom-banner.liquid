@@ -1,27 +1,27 @@
 <style>
-.custom-banner {
-  background: #F2F0F1;
-}
-.custom-banner-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  width: 100%;
-}
-.left-side-container {
-  align-content: center;
-}
-.top-content .heading {
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 64px;
-  vertical-align: middle;
-}
-.top-content .sub-heading {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-}
+  .custom-banner {
+    background: #F2F0F1;
+  }
+  .custom-banner-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    width: 100%;
+  }
+  .left-side-container {
+    align-content: center;
+  }
+  .top-content .heading {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 64px;
+    vertical-align: middle;
+  }
+  .top-content .sub-heading {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+  }
 </style>
 <div class="custom-banner">
   <div class="custom-banner-wrapper  page-width">
@@ -41,7 +41,7 @@
           <div class="sub-heading">{{ section.settings.sub_text }}</div>
         {% endif %}
         {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-          <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+          <a class="button" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
         {% endif %}
       </div>
       <div class="bottom-content">
